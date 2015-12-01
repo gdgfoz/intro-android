@@ -1,5 +1,6 @@
 package br.com.gdgfoz.gdgfoz2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,8 +9,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import models.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
+
+    EditText name = null;
+    EditText email;
+    Pessoa pessoa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,20 +27,44 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-//        setContentView(R.layout.activity_main);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.myToolbar);
+        myToolbar.setTitle(getString(R.string.app_name));
 
+        setSupportActionBar(myToolbar);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        name = (EditText) findViewById(R.id.edt_name);
+        email = (EditText) findViewById(R.id.edt_email);
+        Button send = (Button) findViewById(R.id.btn_send);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        pessoa = new Pessoa();
+
+        send.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+               sendActivity();
             }
         });
+    }
+
+    private void sendActivity() {
+
+        pessoa.setName(name.getText().toString());
+        pessoa.setEmail(email.getText().toString());
+
+        Intent mIntent = new Intent(getApplicationContext(), SecondActivity.class);
+
+        Bundle bundle = new Bundle();
+
+        bundle.putSerializable("pessoa", pessoa);
+
+        mIntent.putExtras(bundle);
+
+        startActivity(mIntent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -48,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.click) {
+            sendActivity();
             return true;
         }
 
