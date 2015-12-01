@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GDGFoz2</string>
+    <string name="action_settings">Settings</string>
+    <string name="edit">Editar</string>
+    <string name="name">Nome:</string>
+    <string name="type_name">digite o nome...</string>
+    <string name="send">Enviar</string>
+    <string name="email">Email:</string>
+    <string name="type_email">digite o email...</string>
+</resources>
