@@ -1,4 +1,4 @@
-package models;
+package br.com.gdgfoz.gdgfoz2.models;
 
 import java.io.Serializable;
 

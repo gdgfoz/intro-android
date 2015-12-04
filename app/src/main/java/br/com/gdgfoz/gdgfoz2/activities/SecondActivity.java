@@ -1,11 +1,13 @@
-package br.com.gdgfoz.gdgfoz2;
+package br.com.gdgfoz.gdgfoz2.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import models.Pessoa;
+import br.com.gdgfoz.gdgfoz2.R;
+import br.com.gdgfoz.gdgfoz2.models.Pessoa;
+
 
 public class SecondActivity extends AppCompatActivity {
 
